@@ -86,16 +86,6 @@ module.exports = {
         assert: 'either',
       },
     ],
-    'jsx-a11y/label-has-for': [
-      2,
-      {
-        components: ['Label'],
-        required: {
-          some: ['id', 'nesting'],
-        },
-        allowChildren: true,
-      },
-    ],
     'react/jsx-uses-react': 'off',
     'react/react-in-jsx-scope': 'off',
 

@@ -36,6 +36,16 @@ export const PeopleFilters = () => {
     return () => clearTimeout(timeout);
   }, [query, setSearchParams]);
 
+  const toggleCentury = (century: string): { centuries: string[] | null } => {
+    const current = searchParams.getAll('centuries');
+
+    const next = current.includes(century)
+      ? current.filter(c => c !== century)
+      : [...current, century];
+
+    return { centuries: next.length > 0 ? next : null };
+  };
+
   return (
     <nav className="panel">
       <p className="panel-heading">Filters</p>
@@ -90,7 +100,7 @@ export const PeopleFilters = () => {
                   key={century}
                   data-cy="century"
                   className={`button mr-1 ${isActive ? 'is-info' : ''}`}
-                  params={{ centuries: [century] }}
+                  params={toggleCentury(century)}
                 >
                   {century}
                 </SearchLink>
